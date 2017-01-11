@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+  <div class="background">
+    <h1>simple <span class="green">Food Planner</span></h1>
+    <div ng-app="foodPlan" ng-controller="myCtrl" class="container mainApp"> <!-- Main App -->
+      <div class="row">
+        <h2>Current Foods</h2>
+      </div>
+      <table style="list-style:none" class="row currentFoodFormat"> <!-- Current Food Table -->
+        <tr>
+          <td>Food Name:</td>
+          <td>Calories:</td>
+          <td>Protein:</td>
+          <td>Carbs:</td>
+          <td>Fat:</td>
+        </tr>
+        <tr ng-repeat="x in foods">
+          <td>{{x.name}}</td>
+          <td>{{x.calories}}</td>
+          <td>{{x.protein}}</td>
+          <td>{{x.carbs}}</td>
+          <td>{{x.fat}}</td>
+          <td><button ng-click="removeFood($index)" class="button">Remove</button></td>
+        </tr>
+        <tr> <!-- Totals Food Table -->
+          <td>Totals:</td>
+          <td>{{totalCalories}}</td>
+          <td>{{totalProtein}}</td>
+          <td>{{totalCarbs}}</td>
+          <td>{{totalFat}}</td>
+        </tr>
+      </table>
+        <div class="row newFood"> <!-- Add Food Form -->
+          <h3>Add Food</h3>
+          <form>
+              <input ng-model="foodToAdd" placeholder="Food's name">
+              <input ng-model="calsToAdd" placeholder="Calories">
+              <input ng-model="proToAdd" placeholder="Protein">
+              <input ng-model="carbsToAdd" placeholder="Carbs">
+              <input ng-model="fatToAdd" placeholder="Fat">
+              <button ng-click="addFood()" class="button"><p>Add Food</p></button>
+          </form>
+        </div>
+      <p class="error">{{error}}</p>
+    </div>
+  </div>
+</body>
+</html>
